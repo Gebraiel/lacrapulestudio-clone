@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@font-face{
+    font-family:"Defonte";
+    src:url("./assets/fonts/De-Fonte-Plus-Demi-Gras-bold.woff2");
+    font-weight:600;
+}
+@font-face{
+    font-family:"Jetbrains";
+    src:url("./assets/fonts/JetBrains-mono-bold.woff2");
+    font-weight:600;
+}
+@font-face{
+    font-family:"Saans";
+    src:url("./assets/fonts/Saans-trial-light.woff2");
+    font-weight:300;
+}
+@font-face{
+    font-family:"Saans";
+    src:url("./assets/fonts/Saans-trial-medium.woff2");
+    font-weight:500;
+}
+@font-face{
+    font-family:"Saans";
+    src:url("./assets/fonts/Saans-trial-black.woff2");
+    font-weight:700;
+}
+@theme{
+    --font-defonte:"Defonte",sans-serif;
+    --font-saans:"Defonte",sans-serif;
+    --font-jetbrains:"Jetbrains",sans-serif
+}
+.container{
+    @apply w-full max-w-full m-auto px-5 py-5
+}
+body{
+    font-family:"Saans",sans-serif;
+    font-weight: 500;
+}
+#root{
+    display: grid;
+    grid-template-rows: 1fr auto;
+    min-height: 100vh;
+}

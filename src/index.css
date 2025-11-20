@@ -2,12 +2,12 @@
 @font-face{
     font-family:"Defonte";
     src:url("./assets/fonts/De-Fonte-Plus-Demi-Gras-bold.woff2");
-    font-weight:600;
+    font-weight:bold;
 }
 @font-face{
     font-family:"Jetbrains";
     src:url("./assets/fonts/JetBrains-mono-bold.woff2");
-    font-weight:600;
+    font-weight:bold;
 }
 @font-face{
     font-family:"Saans";
@@ -27,7 +27,8 @@
 @theme{
     --font-defonte:"Defonte",sans-serif;
     --font-saans:"Defonte",sans-serif;
-    --font-jetbrains:"Jetbrains",sans-serif
+    --font-jetbrains:"Jetbrains",sans-serif;
+    --breakpoint-3xl:1950px;
 }
 .container{
     @apply w-full max-w-full m-auto px-5 py-5
@@ -35,6 +36,7 @@
 body{
     font-family:"Saans",sans-serif;
     font-weight: 500;
+    background-color: white;
 }
 #root{
     display: grid;

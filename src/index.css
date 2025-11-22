@@ -26,7 +26,7 @@
 }
 @theme{
     --font-defonte:"Defonte",sans-serif;
-    --font-saans:"Defonte",sans-serif;
+    --font-saans:"Saans",sans-serif;
     --font-jetbrains:"Jetbrains",sans-serif;
     --breakpoint-3xl:1950px;
 }
@@ -46,4 +46,16 @@ body{
 .filter{
     filter: url(#threshold) blur(.3px);
     -webkit-filter: url(#threshold) blur(0.3px);
+}
+.project-overlay{
+    position:relative;
+}
+.project-overlay::after{
+    content:"";
+    position:absolute;
+    display:block;
+    inset:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(0deg,#1d1d1d 10%,transparent)
 }

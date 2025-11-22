@@ -4,7 +4,7 @@ import Logo from './Logo'
 
 export default function Header() {
   const path = useLocation();
-
+  
   return (
     <header className='absolute left-0 top-0 w-full z-10'>
 

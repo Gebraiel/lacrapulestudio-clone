@@ -6,7 +6,7 @@ export default function Header() {
   const path = useLocation();
 
   return (
-    <header className='absolute left-0 top-0 w-full'>
+    <header className='absolute left-0 top-0 w-full z-10'>
 
       <div className='container'>
           <div className='flex justify-between'>

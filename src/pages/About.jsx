@@ -1,6 +1,9 @@
 import React, { useRef, useState } from "react";
 import SplitText from "../ui/Animation/SplitText";
 import FadeUp from "../ui/Animation/FadeUp";
+import BlurText from "../ui/Animation/BlurText";
+import SlideDown from "../ui/Animation/SlideDown";
+import { AnimationContext } from "../context/AnimationContext";
 
 export default function About() {
   const [active, setActive] = useState(-1);
@@ -100,148 +103,169 @@ export default function About() {
       ),
     },
   ];
+  const [start, setStart] = useState(false);
   return (
-    <>
-      <ul
-        className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[-1] w-3/4 max-w-[1250px] aspect-video bg-white"
-      >
-        {clients.map((client, index) => {
-          return (
-            <li
-              className={`size-full absolute duration-500 ${
-                active == index ? "opacity-100 scale-100" : "opacity-0 scale-0"
-              }`}
-              key={client.image}
-            >
-              <img
-                className="size-full object-cover object-center"
-                src={client.image}
-                alt={client.name}
-              />
-            </li>
-          );
-        })}
-      </ul>
-      <div className="relative mix-blend-exclusion z-1 text-white ">
-
-        <section className="3xl:py-32 py-10 relative  ">
-          <div className="container">
-            <ul className="w-[90%] max-w-[1950px] space-y-5">
-              {paragraphs.map((p, index) => {
-                return (
-                  <li className="text-[clamp(0.9375rem,0.4963rem_+_1.8824vw,3.4375rem)] leading-none font-bold">
+    <AnimationContext.Provider value={{ start, setStart }}>
+      <SlideDown>
+        <ul className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[-1] w-3/4 max-w-[1250px] aspect-video bg-white">
+          {clients.map((client, index) => {
+            return (
+              <li
+                className={`size-full absolute duration-700 will-change-[opacity,transform] ${
+                  active == index
+                    ? "opacity-100 scale-100 "
+                    : "opacity-0 scale-0 "
+                }`}
+                key={client.image}
+              >
+                <img
+                  className="size-full object-cover object-center"
+                  src={client.image}
+                  alt={client.name}
+                />
+              </li>
+            );
+          })}
+        </ul>
+        <div className="relative mix-blend-exclusion z-1 text-white ">
+          <section className="3xl:py-32 py-10 relative  ">
+            <div className="container">
+              <ul className="w-[90%] max-w-[1950px] space-y-5">
+                {paragraphs.map((p, index) => {
+                  return (
+                    <li className="text-[clamp(0.9375rem,0.4963rem_+_1.8824vw,3.4375rem)] leading-none font-bold">
                       <p>
-                        <FadeUp><span className="mr-15">{index + 1}.</span></FadeUp>
-                        <SplitText>
-                          {p}
-                        </SplitText>
+                        <FadeUp>
+                          <span className="mr-15">{index + 1}.</span>
+                        </FadeUp>
+                        <SplitText Animation={FadeUp}>{p}</SplitText>
                       </p>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </section>
-        <section>
-          <div className="container">
-            <div className="flex lg:flex-row max-w-[2250px] gap-5 flex-col justify-between">
-              <div className="lg:w-1/2 w-full grid lg:gap-10 gap-5 sm:grid-cols-2 sm:grid-rows-2 grid-cols-1 grid-rows-4">
-                <div>
-                  <FadeUp><b className="text-gray-500 text-[clamp(0.625rem,0.5478rem_+_0.3294vw,1.0625rem)] font-jetbrains uppercase">
-                    TRUSTED US
-                  </b></FadeUp>
-                  <ul className="flex flex-wrap gap-x-2 justify-start max-w-[350px]">
-                    {clients.map((client, index) => {
-                      return (
-                        <FadeUp><li
-                          onMouseOver={() => setActive(index)}
-                          onMouseLeave={() => setActive(-1)}
-                          key={client.name}
-                          className='text-[clamp(0.75rem,0.6176rem_+_0.5647vw,1.5rem)] font-bold after:content-[""] after:block after:w-full after:h-[2px] after:bg-white after:absolute relative after:left-0 after:bottom-[3px] after:origin-right  hover:after:scale-x-0 after:duration-300'
-                          index={index}
-                        >
-                          {client.name},
-                        </li></FadeUp>
-                      );
-                    })}
-                  </ul>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </section>
+          <section>
+            <div className="container">
+              <div className="flex lg:flex-row max-w-[2250px] gap-5 flex-col justify-between">
+                <div className="lg:w-1/2 w-full grid lg:gap-10 gap-5 sm:grid-cols-2 sm:grid-rows-2 grid-cols-1 grid-rows-4">
+                  <div>
+                    <FadeUp>
+                      <b className="text-gray-500 text-[clamp(0.625rem,0.5478rem_+_0.3294vw,1.0625rem)] font-jetbrains uppercase">
+                        TRUSTED US
+                      </b>
+                    </FadeUp>
+                    <ul className="flex flex-wrap gap-x-2 justify-start max-w-[350px]">
+                      {clients.map((client, index) => {
+                        return (
+                          <FadeUp>
+                            <li
+                              onMouseOver={() => setActive(index)}
+                              onMouseLeave={() => setActive(-1)}
+                              key={client.name}
+                              className='text-[clamp(0.75rem,0.6176rem_+_0.5647vw,1.5rem)] font-bold after:content-[""] after:block after:w-full after:h-[2px] after:bg-white after:absolute relative after:left-0 after:bottom-[3px] after:origin-right  hover:after:scale-x-0 after:duration-300'
+                              index={index}
+                            >
+                              {client.name},
+                            </li>
+                          </FadeUp>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                  <div>
+                    <FadeUp>
+                      <b className="text-gray-500 text-[clamp(0.625rem,0.5478rem_+_0.3294vw,1.0625rem)] font-jetbrains uppercase">
+                        press
+                      </b>
+                    </FadeUp>
+                    <ul className="flex flex-wrap gap-x-2 justify-start max-w-[350px]">
+                      {presses.map((press) => {
+                        return (
+                          <FadeUp>
+                            <li
+                              key={press}
+                              className='text-[clamp(0.75rem,0.6176rem_+_0.5647vw,1.5rem)] font-bold after:content-[""] after:block after:w-full after:h-[1px] after:bg-white after:absolute relative after:left-0 after:bottom-[0px] after:origin-left after:scale-x-0  hover:after:scale-x-100  after:duration-300'
+                            >
+                              {press},
+                            </li>
+                          </FadeUp>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                  <div>
+                    <FadeUp>
+                      <b className="text-gray-500 text-[clamp(0.625rem,0.5478rem_+_0.3294vw,1.0625rem)] font-jetbrains uppercase ">
+                        Services
+                      </b>
+                    </FadeUp>
+                    <ul className="flex flex-wrap gap-x-2 justify-start max-w-[350px]">
+                      {services.map((service) => {
+                        return (
+                          <FadeUp>
+                            <li
+                              key={service}
+                              className="text-[clamp(0.75rem,0.6176rem_+_0.5647vw,1.5rem)] font-bold "
+                            >
+                              {service},
+                            </li>
+                          </FadeUp>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                  <div>
+                    <FadeUp>
+                      <b className="text-gray-500 text-[clamp(0.625rem,0.5478rem_+_0.3294vw,1.0625rem)] font-jetbrains">
+                        Contact
+                      </b>
+                    </FadeUp>
+                    <ul className="flex flex-col gap-x-2 justify-start">
+                      {contacts.map((contact) => {
+                        return (
+                          <FadeUp>
+                            <li
+                              key={contact.title}
+                              className="text-[clamp(0.75rem,0.6176rem_+_0.5647vw,1.5rem)] font-bold "
+                            >
+                              <span>{contact.title}</span> : {contact.content}
+                            </li>
+                          </FadeUp>
+                        );
+                      })}
+                    </ul>
+                  </div>
                 </div>
-                <div>
+                <div className="lg:w-1/2 w-full max-w-xl">
+                  <h1 className="font-defonte text-[clamp(2.3125rem,1.8382rem_+_2.0235vw,5rem)] leading-none filter">
+                    <SplitText Animation={BlurText}>
+                      LET'S CREATE BOLD VISUAL TOGETHER
+                    </SplitText>
+                  </h1>
                   <FadeUp>
-                    <b className="text-gray-500 text-[clamp(0.625rem,0.5478rem_+_0.3294vw,1.0625rem)] font-jetbrains uppercase">
-                    press
-                  </b>
+                    <button className="font-jetbrains text-black bg-white px-5 py-2 text-sm rounded-sm mt-5">
+                      LET'S WORK TOGETHER
+                    </button>
                   </FadeUp>
-                  <ul className="flex flex-wrap gap-x-2 justify-start max-w-[350px]">
-                    {presses.map((press) => {
-                      return (
-                        <FadeUp>
-                          <li
-                          key={press}
-                          className='text-[clamp(0.75rem,0.6176rem_+_0.5647vw,1.5rem)] font-bold after:content-[""] after:block after:w-full after:h-[1px] after:bg-white after:absolute relative after:left-0 after:bottom-[0px] after:origin-left after:scale-x-0  hover:after:scale-x-100  after:duration-300'
-                        >
-                          {press},
-                        </li>
-                        </FadeUp>
-                      );
-                    })}
-                  </ul>
                 </div>
-                <div>
-                  <FadeUp>
-                    <b className="text-gray-500 text-[clamp(0.625rem,0.5478rem_+_0.3294vw,1.0625rem)] font-jetbrains uppercase ">
-                      Services
-                    </b>
-                  </FadeUp>
-                  <ul className="flex flex-wrap gap-x-2 justify-start max-w-[350px]">
-                    {services.map((service) => {
-                      return (
-                        <FadeUp>
-                          <li
-                            key={service}
-                            className="text-[clamp(0.75rem,0.6176rem_+_0.5647vw,1.5rem)] font-bold "
-                          >
-                            {service},
-                          </li>
-                        </FadeUp>
-                      );
-                    })}
-                  </ul>
-                </div>
-                <div>
-                  <FadeUp>
-                    <b className="text-gray-500 text-[clamp(0.625rem,0.5478rem_+_0.3294vw,1.0625rem)] font-jetbrains">
-                      Contact
-                    </b>
-                  </FadeUp>
-                  <ul className="flex flex-col gap-x-2 justify-start">
-                    {contacts.map((contact) => {
-                      return (
-                        <FadeUp>
-                          <li
-                          key={contact.title}
-                          className="text-[clamp(0.75rem,0.6176rem_+_0.5647vw,1.5rem)] font-bold "
-                        >
-                          <span>{contact.title}</span> : {contact.content}
-                        </li>
-                        </FadeUp>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </div>
-              <div className="lg:w-1/2 w-full max-w-xl">
-                <h1 className="font-defonte text-[clamp(2.3125rem,1.8382rem_+_2.0235vw,5rem)] leading-none ">
-                  LET'S CREATE BOLD VISUAL TOGETHER
-                </h1>
-                <button className="font-jetbrains text-black bg-white px-5 py-2 text-sm rounded-sm mt-5">
-                  LET'S WORK TOGETHER
-                </button>
               </div>
             </div>
-          </div>
-        </section>
-      </div>
-    </>
+          </section>
+        </div>
+        <svg hidden id="svg" viewBox="0 0 0 0" aria-hidden="true">
+          <defs>
+            <filter id="threshold">
+              <feColorMatrix
+                in="SourceGraphic"
+                type="matrix"
+                values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 255 -140"
+              ></feColorMatrix>
+            </filter>
+          </defs>
+        </svg>
+      </SlideDown>
+    </AnimationContext.Provider>
   );
 }

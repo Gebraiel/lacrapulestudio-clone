@@ -43,3 +43,7 @@ body{
     grid-template-rows: 1fr auto;
     min-height: 100vh;
 }
+.filter{
+    filter: url(#threshold) blur(.3px);
+    -webkit-filter: url(#threshold) blur(0.3px);
+}

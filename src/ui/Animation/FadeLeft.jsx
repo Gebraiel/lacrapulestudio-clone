@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react'
 import { easeInOut, motion, useAnimation } from "framer-motion";
-import {AnimationContext} from '../../context/AnimationContext';
+import { AnimationContext } from '../../context/AnimationContext';
 
-export default function FadeUp({children}) {
+export default function FadeLeft({children}) {
     const controls = useAnimation();
     const {start} = useContext(AnimationContext);
     useEffect(()=>{
@@ -10,11 +10,11 @@ export default function FadeUp({children}) {
           controls.start("visible")
         }
     },[start])
-const fadeUpVarient = {
-    hidden: { y:"100%",opacity:0},
+const fadeLeftVarient = {
+    hidden: { x:"100%",opacity:0},
     visible: {
     opacity:1,
-    y:0,
+    x:0,
     transition: {
         type: "spring",
         damping: 20,
@@ -23,6 +23,6 @@ const fadeUpVarient = {
     },
 };
   return (
-    <span className='overflow-hidden inline-block'><motion.span className='inline-block' variants={fadeUpVarient}  initial="hidden" animate={controls}>{children}</motion.span></span>
+    <span className='overflow-hidden inline-block'><motion.span className='inline-block' variants={fadeLeftVarient}  initial="hidden" animate={controls}>{children}</motion.span></span>
   )
 }

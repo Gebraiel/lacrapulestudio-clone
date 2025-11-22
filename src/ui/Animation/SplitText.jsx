@@ -1,10 +1,10 @@
 import FadeUp from './FadeUp';
 
-export default function SplitText({children}) {
+export default function SplitText({children,Animation}) {
     return (
         <>
             {children.split(" ").map((char)=>{
-                return <FadeUp>{char+"\u00A0" }</FadeUp>
+                return <Animation>{char+"\u00A0" }</Animation>
             })}
         </>
     )

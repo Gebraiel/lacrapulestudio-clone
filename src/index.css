@@ -37,6 +37,7 @@ body{
     font-family:"Saans",sans-serif;
     font-weight: 500;
     background-color: white;
+    overflow-x:hidden;
 }
 #root{
     display: grid;
@@ -58,4 +59,17 @@ body{
     width:100%;
     height:100%;
     background:linear-gradient(0deg,#1d1d1d 10%,transparent)
+}
+
+.custom-line {
+  height: 1px; /* سماكة الخط */
+  width: 100%; /* عرض الخط */
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.6),
+    rgba(255,255,255,0.6) 10px,
+    transparent 10px,
+    transparent 25px
+  );
+  clip-path: inset(0px 50%);
 }

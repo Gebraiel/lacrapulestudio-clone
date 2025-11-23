@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import FadeIn from './Animation/FadeIn';
 
-export default function ProjectList({projects}) {
+export default function ProjectList({projects,filter}) {
+  const [filteredProjects,setFilteredProjects] = useState([]);
+  console.log(filteredProjects)
+  useEffect(()=>{
+    if(filter == ''){
+        setFilteredProjects(projects);
+    }else{
+        const newProjects = projects.filter((project)=>project.categories.includes(filter) );
+        setFilteredProjects(newProjects)
+    }
+  },[filter])
   return (
-    <div className='flex justify-between flex-wrap gap-y-3'> 
-        {projects.map((project)=>{
-           return(<div className='w-[calc(100%_/_3_-_12px)]'>
+    <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3'>
+        {filteredProjects.map((project)=>{
+           return(
+           <FadeIn key={project.name}>
                 <div className='aspect-[4/5] project-overlay scale-100 group border-0'>
                     <img className='w-full h-full object-cover scale-100 group-hover:scale-95 duration-500' src={project.preview} alt={project.name} />
                 </div>
@@ -17,7 +29,7 @@ export default function ProjectList({projects}) {
                         })}
                     </ul>
                 </div>
-            </div>)
+            </FadeIn>)
         })}
     </div>
   )

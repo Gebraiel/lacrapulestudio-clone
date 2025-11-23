@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AnimationContext } from '../context/AnimationContext';
 import SlideDown from '../ui/Animation/SlideDown';
 import ProjectList from '../ui/ProjectList';
-
-export default function Projects() {
-  const [start,setStart] = useState(false);
-  const [filter,setFilter] = useState("");
-  const categories = ["creative direction","3d & cgi","mixed media","post production"];
+import ClipLine from '../ui/ClipLine';
+import { ThemeContext } from '../context/ThemeContext';
+import SplitText from '../ui/Animation/SplitText';
+import FadeUp from '../ui/Animation/FadeUp';
+import FadeIn from '../ui/Animation/FadeIn';
+const categories = ["creative direction","3d & cgi","mixed media","post production"];
   const projects = [
-  
+
     {
       name:"coperni",
       preview:"/clients/audemars.avif",
@@ -27,16 +28,17 @@ export default function Projects() {
       client:"PINK & BLUE VISETOS",
       categories:["creative direction","3d & cgi","post production"]
     },
-    {
-      name:"MCM",
-      preview:"/clients/audemars.avif",
-      client:"PINK & BLUE VISETOS",
-      categories:["creative direction","3d & cgi","post production"]
-    },
+    
   ]
+export default function Projects() {
+  const [filter,setFilter] = useState("");
+  const {setIsDark} = useContext(ThemeContext);
+
+  useEffect(()=>{
+    setIsDark(true);
+  },[])
   return (
-    <AnimationContext.Provider value={{ start, setStart }}>
-      <SlideDown bg="#1d1d1d">
+      <SlideDown >
         <div className='container'>
           <div>
             <div>
@@ -46,15 +48,22 @@ export default function Projects() {
             <ul className='mt-8'>
                 {categories.map((category)=>{
                   return(
-                      <li onClick={()=>setFilter(category)}className='text-[clamp(2.3125rem,1.4963rem_+_3.4824vw,6.9375rem)] leading-none text-white uppercase font-saans font-bold cursor-pointer hover:text-white/60 duration-300 ' >{category}</li>
+                      <li onClick={()=>setFilter(category)}className={`text-[clamp(2.3125rem,1.4963rem_+_3.4824vw,6.9375rem)] leading-none uppercase font-saans font-bold cursor-pointer ${category == filter  ? 'text-white': filter =='' ?"text-white  hover:text-white/60 duration-300" :"text-white/60"}`} >
+                        <SplitText Animation={FadeUp}>
+                          {category}
+                        </SplitText>
+                      </li>
                   )
                 })}
             </ul>
           </div>
-          <ProjectList projects={projects}/>
+          <div className='mt-20'>
+            <ClipLine/>
+            <b className='block my-5 text-center uppercase text-sm text-white/60'><FadeIn>Selected Projects</FadeIn></b>
+            <ProjectList projects={projects} filter={filter}/>
+          </div>
         </div>
 
       </SlideDown>
-    </AnimationContext.Provider>
   )
 }

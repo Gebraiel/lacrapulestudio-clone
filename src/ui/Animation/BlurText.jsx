@@ -14,9 +14,9 @@ export default function BlurText({children}) {
         }
     },[start,inView])
 const BlurVarient = {
-    hidden: { filter:"blur(5px)",opacity:0},
+    hidden: { filter:"blur(10px)"},
     visible: {
-    opacity:1,
+
     filter:"blur(0)",
     transition: {
         type: "spring",

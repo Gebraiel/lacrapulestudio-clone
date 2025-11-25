@@ -18,7 +18,17 @@ export default function Applayout() {
               <AnimatePresence >
                   <Outlet/>
               </AnimatePresence>
-          <Footer/>
+          <svg hidden id="svg" viewBox="0 0 0 0" aria-hidden="true">
+          <defs>
+            <filter id="threshold">
+              <feColorMatrix
+                in="SourceGraphic"
+                type="matrix"
+                values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 255 -140"
+              ></feColorMatrix>
+            </filter>
+          </defs>
+        </svg>
       </ThemeContext.Provider>
     </AnimationContext.Provider>
 

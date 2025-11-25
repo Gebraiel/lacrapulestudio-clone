@@ -1,0 +1,41 @@
+import React, { useContext, useEffect } from 'react'
+import FadeIn from './Animation/FadeIn'
+import { motion, useAnimate, useInView } from "framer-motion";
+import { AnimationContext } from '../context/AnimationContext';
+import SplitText from './Animation/SplitText';
+import BlurText from './Animation/BlurText';
+export default function ProjectCard({project}) {
+  const [scope , animate ] = useAnimate();
+  const{start}=useContext(AnimationContext);
+  const inView = useInView(scope)
+  useEffect(()=>{
+    if(inView&&start){
+        const animation = async () => {
+            await animate(scope.current,{opacity:1},{duration:0.7});
+       }
+       animation()
+
+    }
+  },[inView,start])
+  return (
+    <motion.div ref={scope} key={project.name} className='opacity-0'>
+        <div className='aspect-[4/5] project-overlay scale-100 group border-0'>
+            <img className='w-full h-full object-cover scale-100 group-hover:scale-95 duration-500' src={project.preview} alt={project.name} />
+        </div>
+        <div className='text-white -translate-y-15 pl-5'>
+             <b className='font-defonte uppercase text-4xl title filter'>
+                <SplitText Animation={BlurText}>
+                   {project.name}
+                </SplitText>
+            </b>
+
+            <p className='font-saans text-sm'>{project.client}</p>
+            <ul className='flex gap-2 mt-2'>
+                {project.categories.map((category)=>{
+                    return <li className='font-jetbrains text-[9px] border p-1 rounded-sm'>{category}</li>
+                })}
+            </ul>
+        </div>
+    </motion.div>
+  )
+}

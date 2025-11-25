@@ -13,9 +13,9 @@ export default function Header() {
             <Link to="/" ><span className={`block w-[100px] ${isDark ? 'fill-white' : 'fill-black'}`}><Logo/></span></Link>
             <nav>
               <ul className={`flex gap-3 font-bold uppercase text-sm ${isDark?'text-white':'text-black'}`}>
-                <li><NavLink to="/" className={({ isActive})=>`${isActive && isDark ? 'border-b border-white/60' : 'border-b border-black'}`}>Home</NavLink></li>
-                <li><NavLink to="/projects" className={({ isActive})=>`${isActive && isDark ? 'border-b border-white/60' : 'border-b border-black'}`}> Projects</NavLink></li>
-                <li><NavLink to="/about" className={({ isActive})=>`${isActive && isDark ? 'border-b border-white/60' : 'border-b border-black'}`}>About</NavLink></li>
+                <li><NavLink to="/" className={({ isActive})=>`${isActive && (isDark?'border-b border-white/60' : 'border-b border-black')}`}>Home</NavLink></li>
+                <li><NavLink to="/projects" className={({ isActive})=>`${isActive && (isDark?'border-b border-white/60' : 'border-b border-black')}`}> Projects</NavLink></li>
+                <li><NavLink to="/about" className={({ isActive})=>`${isActive && (isDark?'border-b border-white/60' : 'border-b border-black')}`}>About</NavLink></li>
               </ul>
             </nav>
           </div>

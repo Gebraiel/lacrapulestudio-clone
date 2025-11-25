@@ -1,18 +1,19 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import SplitText from "../ui/Animation/SplitText";
-import FadeUp from "../ui/Animation/FadeUp";
-import BlurText from "../ui/Animation/BlurText";
-import SlideDown from "../ui/Animation/SlideDown";
+import { useContext, useEffect, useState } from "react";
 import { AnimationContext } from "../context/AnimationContext";
-import Footer from "../ui/Footer";
 import { ThemeContext } from "../context/ThemeContext";
+import BlurText from "../ui/Animation/BlurText";
+import FadeUp from "../ui/Animation/FadeUp";
+import SplitText from "../ui/Animation/SplitText";
+import Footer from "../ui/Footer";
+import Main from "../ui/Main";
+import PageTransition from "../ui/Animation/PageTransition";
 
 export default function About() {
   const [active, setActive] = useState(-1);
-  const{setIsDark} = useContext(ThemeContext);
-  useEffect(()=>{
-    setIsDark(false)
-  },[])
+  const { setIsDark } = useContext(ThemeContext);
+  useEffect(() => {
+    setIsDark(false);
+  }, []);
   const paragraphs = [
     "Since 2021, LaCrapule Studio has been building a distinct visual language rooted in precision, curiosity, and cultural relevance. We aim to create bold visuals, that blur the lines between reality and fiction.",
     "From fashion to music, tech to art, we move across worlds to craft images that speak to now. Whether it's a product, a film, or a digital experiment - each project is a way to push boundaries and tell stories that leave a mark.",
@@ -112,7 +113,8 @@ export default function About() {
   const [start, setStart] = useState(false);
   return (
     <AnimationContext.Provider value={{ start, setStart }}>
-      <SlideDown className="3xl:pt-32 pt-15">
+
+      <Main className="3xl:pt-32 pt-15">
         <ul className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[-1] w-3/4 max-w-[1250px] aspect-video bg-white">
           {clients.map((client, index) => {
             return (
@@ -260,10 +262,8 @@ export default function About() {
             </div>
           </section>
         </div>
-
-      </SlideDown>
-      <Footer/>
-
+      </Main>
+      <Footer />
     </AnimationContext.Provider>
   );
 }

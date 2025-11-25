@@ -5,20 +5,8 @@ import { AnimationContext } from '../context/AnimationContext';
 import SplitText from './Animation/SplitText';
 import BlurText from './Animation/BlurText';
 export default function ProjectCard({project}) {
-  const [scope , animate ] = useAnimate();
-  const{start}=useContext(AnimationContext);
-  const inView = useInView(scope)
-  useEffect(()=>{
-    if(inView&&start){
-        const animation = async () => {
-            await animate(scope.current,{opacity:1},{duration:0.7});
-       }
-       animation()
-
-    }
-  },[inView,start])
   return (
-    <motion.div ref={scope} key={project.name} className='opacity-0'>
+    <FadeIn key={project.name}>
         <div className='aspect-[4/5] project-overlay scale-100 group border-0'>
             <img className='w-full h-full object-cover scale-100 group-hover:scale-95 duration-500' src={project.preview} alt={project.name} />
         </div>
@@ -36,6 +24,6 @@ export default function ProjectCard({project}) {
                 })}
             </ul>
         </div>
-    </motion.div>
+    </FadeIn>
   )
 }

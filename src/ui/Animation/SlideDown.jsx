@@ -18,6 +18,6 @@ const slideDownVarient = {
 
 };
   return (
-    <motion.main className={`min-h-screen ${isDark ? 'bg-[#1d1d1d]' : 'bg-white '} ${className}`} variants={slideDownVarient}  initial="hidden" animate="visible"  onAnimationComplete={() => setStart(true)}>{children}</motion.main>
+    <motion.main className={`min-h-screen ${isDark ? 'bg-[#1d1d1d]' : 'bg-transparent '} ${className}`} variants={slideDownVarient}  initial="hidden" animate="visible"  onAnimationComplete={() => setStart(true)}>{children}</motion.main>
   )
 }

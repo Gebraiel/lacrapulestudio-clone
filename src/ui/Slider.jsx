@@ -58,7 +58,7 @@ export default function Slider({ slider }) {
             </div>
             <div className="container w-full absolute z-10 left-0 top-1/2">
               <div className="w-full flex sm:flex-row gap-5 flex-col justify-between sm:items-center items-end">
-                <div className="flex sm:flex-row flex-col sm:items-center items-start gap-10 sm:w-1/4">
+                <div className="flex sm:flex-row flex-col sm:items-center items-start gap-10 sm:w-1/4 w-full">
                   <div className="navigation-buttons flex sm:flex-col flex-row-reverse  items-center gap-3">
                     <button className="next-btn bg-white text-black cursor-pointer text-lg font-bold size-10 rounded-lg">
                       &#x203A;

@@ -14,7 +14,7 @@ export default function BlurText({children}) {
         }
     },[start,inView])
 const BlurVarient = {
-    hidden: { filter:"blur(10px)"},
+    hidden: { filter:"blur(20px)"},
     visible: {
 
     filter:"blur(0)",

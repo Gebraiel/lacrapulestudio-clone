@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { ThemeContext } from "../context/ThemeContext";
 import BlurText from "../ui/Animation/BlurText";
 import FadeIn from "../ui/Animation/FadeIn";
 import FadeUp from "../ui/Animation/FadeUp";
@@ -10,7 +9,6 @@ import Footer from "../ui/Footer";
 import Logo from "../ui/Logo";
 import ProjectList from "../ui/ProjectList";
 import Main from "../ui/Main";
-import PageTransition from "../ui/Animation/PageTransition";
 export const categories = [
   "creative direction",
   "3d & cgi",
@@ -39,10 +37,8 @@ export const projects = [
 ];
 export default function Projects() {
   const [filter, setFilter] = useState("");
-  const { setIsDark } = useContext(ThemeContext);
-
-  useEffect(() => {
-    setIsDark(true);
+   useEffect(() => {
+    document.documentElement.classList.add("dark")
   }, []);
   return (
     <>

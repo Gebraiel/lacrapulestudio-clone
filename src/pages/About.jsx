@@ -1,18 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { AnimationContext } from "../context/AnimationContext";
-import { ThemeContext } from "../context/ThemeContext";
 import BlurText from "../ui/Animation/BlurText";
 import FadeUp from "../ui/Animation/FadeUp";
 import SplitText from "../ui/Animation/SplitText";
 import Footer from "../ui/Footer";
 import Main from "../ui/Main";
-import PageTransition from "../ui/Animation/PageTransition";
 
 export default function About() {
   const [active, setActive] = useState(-1);
-  const { setIsDark } = useContext(ThemeContext);
   useEffect(() => {
-    setIsDark(false);
+    document.documentElement.classList.remove("dark")
   }, []);
   const paragraphs = [
     "Since 2021, LaCrapule Studio has been building a distinct visual language rooted in precision, curiosity, and cultural relevance. We aim to create bold visuals, that blur the lines between reality and fiction.",

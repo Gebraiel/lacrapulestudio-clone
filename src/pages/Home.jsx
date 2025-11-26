@@ -1,5 +1,4 @@
 import { useContext, useEffect } from "react";
-import { ThemeContext } from "../context/ThemeContext";
 import SlideDown from "../ui/Main";
 import Slider from "../ui/Slider";
 import Main from "../ui/Main";
@@ -65,10 +64,8 @@ const slider = {
   ],
 };
 export default function Home() {
-  const { setIsDark } = useContext(ThemeContext);
-
   useEffect(() => {
-    setIsDark(true);
+    document.documentElement.classList.add("dark")
   }, []);
   return (
     <Main>

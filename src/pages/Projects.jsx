@@ -43,8 +43,7 @@ export default function Projects() {
   return (
     <>
 
-      <Main className="3xl:pt-32 pt-15">
-        <section>
+        <section className="3xl:pt-32 pt-15">
           <div className="container">
             <div>
               <div>
@@ -132,7 +131,6 @@ export default function Projects() {
             </div>
           </div>
         </section>
-      </Main>
       <Footer />
     </>
   );

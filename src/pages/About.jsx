@@ -5,12 +5,6 @@ import FadeUp from "../ui/Animation/FadeUp";
 import SplitText from "../ui/Animation/SplitText";
 import Footer from "../ui/Footer";
 import Main from "../ui/Main";
-
-export default function About() {
-  const [active, setActive] = useState(-1);
-  useEffect(() => {
-    document.documentElement.classList.remove("dark")
-  }, []);
   const paragraphs = [
     "Since 2021, LaCrapule Studio has been building a distinct visual language rooted in precision, curiosity, and cultural relevance. We aim to create bold visuals, that blur the lines between reality and fiction.",
     "From fashion to music, tech to art, we move across worlds to craft images that speak to now. Whether it's a product, a film, or a digital experiment - each project is a way to push boundaries and tell stories that leave a mark.",
@@ -107,12 +101,17 @@ export default function About() {
       ),
     },
   ];
+export default function About() {
+  const [active, setActive] = useState(-1);
+  useEffect(() => {
+    document.documentElement.classList.remove("dark")
+  }, []);
+
   const [start, setStart] = useState(false);
   return (
     <AnimationContext.Provider value={{ start, setStart }}>
 
-      <Main className="3xl:pt-32 pt-15">
-        <ul className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[-1] w-3/4 max-w-[1250px] aspect-video bg-white">
+        <ul className="3xl:pt-32 pt-15 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[-1] w-3/4 max-w-[1250px] aspect-video bg-white">
           {clients.map((client, index) => {
             return (
               <li
@@ -259,7 +258,6 @@ export default function About() {
             </div>
           </section>
         </div>
-      </Main>
       <Footer />
     </AnimationContext.Provider>
   );

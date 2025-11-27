@@ -68,10 +68,8 @@ export default function Home() {
     document.documentElement.classList.add("dark")
   }, []);
   return (
-    <Main>
       <section className="h-screen bg-black overflow-hidden">
         <Slider slider={slider} />
       </section>
-    </Main>
   );
 }

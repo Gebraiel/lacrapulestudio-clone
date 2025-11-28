@@ -1,7 +1,5 @@
-import { useContext, useEffect } from "react";
-import SlideDown from "../ui/Main";
+import { useLayoutEffect } from "react";
 import Slider from "../ui/Slider";
-import Main from "../ui/Main";
 const slider = {
   sliders: [
     {
@@ -64,7 +62,7 @@ const slider = {
   ],
 };
 export default function Home() {
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.classList.add("dark")
   }, []);
   return (

@@ -1,4 +1,3 @@
-import FadeUp from './FadeUp';
 
 export default function SplitText({children,Animation="motion.span",classes=""}) {
     return (

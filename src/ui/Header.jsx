@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import Logo from './Logo'
 
 export default function Header() {

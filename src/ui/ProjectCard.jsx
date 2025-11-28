@@ -1,8 +1,5 @@
-import React, { useContext, useEffect } from 'react'
 import FadeIn from './Animation/FadeIn'
-import { motion, useAnimate, useInView } from "framer-motion";
-import { AnimationContext } from '../context/AnimationContext';
-import SplitText from './Animation/SplitText';
+import SplitText from './SplitText';
 import BlurText from './Animation/BlurText';
 export default function ProjectCard({project}) {
   return (

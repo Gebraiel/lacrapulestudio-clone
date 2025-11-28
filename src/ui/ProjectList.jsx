@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import FadeIn from './Animation/FadeIn';
+import { useEffect, useState } from 'react'
 import ProjectCard from './ProjectCard';
 
 export default function ProjectList({projects,filter}) {

@@ -40,14 +40,12 @@ export default function Loader({ show, setShow }) {
     return () => window.removeEventListener("load", handleLoad);
   }, []);
 
-  // 👇 تحريك الكاونتر حسب حالة التحميل
   useEffect(() => {
     if (!show) return;
 
     let interval;
 
     if (!isPageLoaded) {
-      // طول ما الصفحة لسه بتحمّل: عد لحد 95 ووقف
       interval = setInterval(() => {
         setProgress((prev) => {
           if (prev >= 95) {
@@ -58,12 +56,10 @@ export default function Loader({ show, setShow }) {
         });
       }, 25);
     } else {
-      // أول ما الصفحة تخلص تحميل: كمل من اللي انت واقف عليه لحد 100
       interval = setInterval(() => {
         setProgress((prev) => {
           if (prev >= 100) {
             clearInterval(interval);
-            // ادّي فرصة صغيرة للـ 100 تبان وبعدين اقفل اللودر
             setTimeout(() => setShow(false), 300);
             return 100;
           }

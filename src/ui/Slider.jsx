@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion } from "framer-motion";
 
-import { Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay } from "swiper/modules";
+import { Navigation, EffectFade, Autoplay } from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";

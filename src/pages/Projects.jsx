@@ -1,14 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import BlurText from "../ui/Animation/BlurText";
 import FadeIn from "../ui/Animation/FadeIn";
 import FadeUp from "../ui/Animation/FadeUp";
-import SplitText from "../ui/Animation/SplitText";
+import SplitText from "../ui/SplitText";
 import ClipLine from "../ui/ClipLine";
 import CTAButton from "../ui/CTAButton";
 import Footer from "../ui/Footer";
 import Logo from "../ui/Logo";
 import ProjectList from "../ui/ProjectList";
-import Main from "../ui/Main";
 export const categories = [
   "creative direction",
   "3d & cgi",
@@ -37,7 +36,7 @@ export const projects = [
 ];
 export default function Projects() {
   const [filter, setFilter] = useState("");
-   useEffect(() => {
+   useLayoutEffect(() => {
     document.documentElement.classList.add("dark")
   }, []);
   return (

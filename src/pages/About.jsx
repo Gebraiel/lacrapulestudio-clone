@@ -1,10 +1,9 @@
-import { useContext, useEffect, useState } from "react";
-import { AnimationContext } from "../context/AnimationContext";
+import { useLayoutEffect, useState } from "react";
 import BlurText from "../ui/Animation/BlurText";
 import FadeUp from "../ui/Animation/FadeUp";
-import SplitText from "../ui/Animation/SplitText";
+import SplitText from "../ui/SplitText";
 import Footer from "../ui/Footer";
-import Main from "../ui/Main";
+import FadeIn from "../ui/Animation/FadeIn";
   const paragraphs = [
     "Since 2021, LaCrapule Studio has been building a distinct visual language rooted in precision, curiosity, and cultural relevance. We aim to create bold visuals, that blur the lines between reality and fiction.",
     "From fashion to music, tech to art, we move across worlds to craft images that speak to now. Whether it's a product, a film, or a digital experiment - each project is a way to push boundaries and tell stories that leave a mark.",
@@ -103,15 +102,13 @@ import Main from "../ui/Main";
   ];
 export default function About() {
   const [active, setActive] = useState(-1);
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.classList.remove("dark")
   }, []);
-
-  const [start, setStart] = useState(false);
   return (
-    <AnimationContext.Provider value={{ start, setStart }}>
-
-        <ul className="3xl:pt-32 pt-15 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[-1] w-3/4 max-w-[1250px] aspect-video bg-white">
+      <>      
+        <FadeIn>
+          <ul className="3xl:pt-32 pt-15 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[-1] w-3/4 max-w-[1250px] aspect-video bg-white">
           {clients.map((client, index) => {
             return (
               <li
@@ -131,6 +128,7 @@ export default function About() {
             );
           })}
         </ul>
+        </FadeIn>
         <div className="relative mix-blend-exclusion z-1 text-white ">
           <section className="3xl:py-32 py-10 relative  ">
             <div className="container">
@@ -258,7 +256,7 @@ export default function About() {
             </div>
           </section>
         </div>
-      <Footer />
-    </AnimationContext.Provider>
+        <Footer />
+      </>
   );
 }

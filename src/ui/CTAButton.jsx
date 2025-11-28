@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function CTAButton() {
   return (
     <div className="group w-fit m-auto">

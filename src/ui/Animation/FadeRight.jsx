@@ -1,19 +1,7 @@
-import React, { useContext, useEffect, useRef } from 'react'
-import { motion, useAnimation, useInView } from "framer-motion";
-import {AnimationContext} from '../../context/AnimationContext';
+import { motion } from "framer-motion";
 
 export default function FadeRight({children}) {
-    const controls = useAnimation();
-    const {start} = useContext(AnimationContext);
-    const ref = useRef(null);
 
-    const inView = useInView(ref, { once: true });
-
-    useEffect(()=>{
-        if (start && inView){
-          controls.start("visible")
-        }
-    },[start,inView])
 const fadeRightVarient = {
     hidden: { x:"-100%",opacity:0},
     visible: {
@@ -27,6 +15,6 @@ const fadeRightVarient = {
     },
 };
   return (
-   <motion.span ref={ref} className='inline-block' variants={fadeRightVarient}  initial="hidden" animate={controls}>{children}</motion.span>
+   <motion.span className='inline-block' variants={fadeRightVarient}  initial="hidden" whileInView='visible'>{children}</motion.span>
   )
 }

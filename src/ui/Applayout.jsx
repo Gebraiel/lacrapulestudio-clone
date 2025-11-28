@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import Header from './Header'
-import Footer from './Footer'
 import { Outlet, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'motion/react'
 import { AnimationContext } from '../context/AnimationContext'
@@ -17,10 +16,13 @@ export default function Applayout() {
           <Loader show={isLoading} setShow={setIsLoading} />
 
           <Header/>
-              <AnimatePresence  mode='wait'>
-                  <Main key={location.pathname}>
-                    <Outlet/>
-                  </Main>
+              <AnimatePresence  mode='layout'>
+                  {
+                    !isLoading && 
+                    <Main key={location.pathname}>
+                      <Outlet/>
+                    </Main> 
+                  }
               </AnimatePresence>
           <svg hidden id="svg" viewBox="0 0 0 0" aria-hidden="true">
           <defs>

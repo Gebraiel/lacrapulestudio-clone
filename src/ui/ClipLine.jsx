@@ -1,16 +1,8 @@
 import { motion, useAnimation } from "framer-motion";
 import { useContext, useEffect } from "react";
-import { AnimationContext } from "../context/AnimationContext";
 
 export default function ClipLine() {
-     const controls = useAnimation();
-    const {start} = useContext(AnimationContext);
-    console.log(start)
-    useEffect(()=>{
-        if (start){
-          controls.start("visible")
-        }
-    },[start])
+
   const clipVarient = {
     hidden: { clipPath:"inset(0px 50%)"},
     visible: {
@@ -23,7 +15,7 @@ export default function ClipLine() {
     },
 };
   return (
-    <motion.div className='custom-line' variants={clipVarient}  initial="hidden" animate={controls} ></motion.div>
+    <motion.div className='custom-line' variants={clipVarient}  initial="hidden" whileInView='visible' ></motion.div>
 
   )
 }

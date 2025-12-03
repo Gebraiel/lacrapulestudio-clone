@@ -23,9 +23,10 @@ function App() {
       element:<Projects/>
     },
     {
-      path:"project/:id",
+      path:"project",
       element:<Project/>
-    }
+    },
+
   ]
   let router = createBrowserRouter([
     {

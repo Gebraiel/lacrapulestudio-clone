@@ -1,4 +1,4 @@
-import { useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import Slider from "../ui/Slider";
 const slider = {
   sliders: [
@@ -65,6 +65,9 @@ export default function Home() {
   useLayoutEffect(() => {
     document.documentElement.classList.add("dark")
   }, []);
+   useEffect(()=>{
+          window.scrollTo(0,0);
+      })
   return (
       <section className="h-screen bg-black overflow-hidden">
         <Slider slider={slider} />

@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import BlurText from "../ui/Animation/BlurText";
 import FadeUp from "../ui/Animation/FadeUp";
 import SplitText from "../ui/SplitText";
@@ -105,8 +105,11 @@ export default function About() {
   useLayoutEffect(() => {
     document.documentElement.classList.remove("dark")
   }, []);
+   useEffect(()=>{
+          window.scrollTo(0,0);
+      })
   return (
-      <>      
+      <>
         <FadeIn>
           <ul className="3xl:pt-32 pt-15 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[-1] w-3/4 max-w-[1250px] aspect-video bg-white">
           {clients.map((client, index) => {

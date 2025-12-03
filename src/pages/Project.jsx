@@ -1,4 +1,4 @@
-import { useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import BlurText from '../ui/Animation/BlurText';
 import FadeUp from '../ui/Animation/FadeUp';
 import ClipLine from '../ui/ClipLine';
@@ -14,6 +14,9 @@ export default function Project() {
     useLayoutEffect(() => {
     document.documentElement.classList.add("dark")
     }, []);
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    })
   return (
     <>
 
